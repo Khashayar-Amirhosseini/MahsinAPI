@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 public class ExceptionWrapper {
+
     public static String getMessage(Exception e) {
         System.out.println("wrapper runs");
         if(e instanceof AccessDeniedException){

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="file://C:/Java3/lib" />
+      <root url="file://C:/Java3/security" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/spring-beans-4.1.4.RELEASE-sources.jar!/" />
+    </SOURCES>
+    <jarDirectory url="file://C:/Java3/lib" recursive="false" />
+    <jarDirectory url="file://C:/Java3/security" recursive="false" />
+  </library>
+</component>

@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="MahsinApi archive">
+    <output-path>$PROJECT_DIR$/out/artifacts/MahsinApi_archive</output-path>
+    <root id="archive" name="MahsinApi archive.war">
+      <element id="artifact" artifact-name="MahsinApi" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="mysql-connector-java-8.0.30" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

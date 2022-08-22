@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="email">
+    <CLASSES>
+      <root url="file://C:/Java3/email" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://C:/Java3/email" recursive="false" />
+  </library>
+</component>

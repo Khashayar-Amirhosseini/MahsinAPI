@@ -12,7 +12,7 @@ public class Service {
     private String title;
     ///@Column(name = "DESCRIPTION",columnDefinition = "CLOP",nullable = false)
     @Column(name = "DESCRIPTION",columnDefinition = "text",nullable = false)
-    @Lob
+    
     private String description;
     @OneToOne@JoinColumn(name = "USER_FK")
     private User user;

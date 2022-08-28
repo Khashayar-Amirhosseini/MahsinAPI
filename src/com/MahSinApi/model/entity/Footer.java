@@ -8,17 +8,17 @@ public class Footer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Lob
-    //@Column(name = "INSTAGRAM",columnDefinition = "clob")
+    
+    //@Column(name = "INSTAGRAM",columnDefinition = "c")
     @Column(name = "INSTAGRAM",columnDefinition = "text")
     private String instagram;
-    @Lob
+    
     @Column(name = "TELEGRAM",columnDefinition = "text")
-    //@Column(name = "TELEGRAM",columnDefinition = "clob")
+    //@Column(name = "TELEGRAM",columnDefinition = "c")
     private String telegram;
-    @Lob
+    
     @Column(name = "EMAIL",columnDefinition = "text")
-    //@Column(name = "EMAIL",columnDefinition = "clob")
+    //@Column(name = "EMAIL",columnDefinition = "c")
     private String email ;
     @Column(name = "TEL1",columnDefinition = "text")
     private String tel1;
@@ -26,12 +26,12 @@ public class Footer {
     private String tel2;
     @Column(name = "TEL3",columnDefinition = "text")
     private String tel3;
-    @Lob
-    //@Column(name = "ADDRESS",columnDefinition = "clob",nullable = false)
+    
+    //@Column(name = "ADDRESS",columnDefinition = "c",nullable = false)
     @Column(name = "ADDRESS",columnDefinition = "text",nullable = false)
     private String address;
-    @Lob
-    //@Column(name = "MAP_SRC",columnDefinition = "clob",nullable = false)
+    
+    //@Column(name = "MAP_SRC",columnDefinition = "c",nullable = false)
     @Column(name = "MAP_SRC",columnDefinition = "text",nullable = false)
     private String mapSRC;
     @Column(name = "CONSULTANT_TEL",columnDefinition = "text",nullable = false)

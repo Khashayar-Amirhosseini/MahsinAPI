@@ -12,11 +12,10 @@ public class Facility {
     private String name;
     //@Column(name = "UTILITY",columnDefinition = "CLOB",nullable = false)
     @Column(name = "UTILITY",columnDefinition = "text",nullable = false)
-    @Lob
+    
     private String utility;
     //@Column(name = "DESCRIPTION",columnDefinition = "CLOP",nullable = false)
     @Column(name = "DESCRIPTION",columnDefinition = "text",nullable = false)
-    @Lob
     private String description;
     @OneToOne@JoinColumn(name = "USER_FK")
     private User user;

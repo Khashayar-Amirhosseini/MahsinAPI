@@ -7,7 +7,7 @@ public class Reference {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Lob
+    
     //@Column(name = "VALUE",columnDefinition = "clob",nullable = false)
     @Column(name = "DIS",columnDefinition = "text",nullable = false)
     private String value;

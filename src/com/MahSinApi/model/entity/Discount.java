@@ -13,7 +13,7 @@ public class Discount {
     @Column(name = "NAME",nullable = false,columnDefinition = "text")
     private String name;
     //@Lob@Column(name = "DESCRIPTION",columnDefinition = "CLOB")
-    @Lob@Column(name = "DESCRIPTION",columnDefinition = "text")
+    @Column(name = "DESCRIPTION",columnDefinition = "text")
     private String description;
     @Column(name= "CREATION_DATE",columnDefinition = "DATE")
     private Date creationDate;

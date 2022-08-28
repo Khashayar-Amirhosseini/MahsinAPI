@@ -9,7 +9,7 @@ public class Achievement {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     //@Lob@Column(name = "DESCRIPTION",columnDefinition = "CLOB",nullable = false,unique = true)
-    @Lob@Column(name = "DESCRIPTION",columnDefinition = "TEXT",nullable = false)
+    @Column(name = "DESCRIPTION",columnDefinition = "TEXT",nullable = false)
     private String description;
     @Column(name = "ACHIEVEMENT_DATE",columnDefinition = "timestamptz")
     private Date date;

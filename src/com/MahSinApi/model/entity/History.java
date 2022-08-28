@@ -8,8 +8,8 @@ import java.util.Date;
 public class History {
     @Id@GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
-    @Lob
-    //@NotNull@Column(unique = true,name="DESCRIPTION",columnDefinition = "BLOB")
+
+    //@NotNull@Column(unique = true,name="DESCRIPTION",columnDefinition = "B")
     @NotNull@Column(name="DESCRIPTION",columnDefinition = "TEXT")
     private String description;
     @Column(name = "UPDATE_DATE", columnDefinition = "DATE")

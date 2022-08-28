@@ -21,8 +21,8 @@ public class Doctor {
     private long medicalId;
     @Column(name = "STATE",columnDefinition = "text")
     private String state;
-   // @Lob@Column(name = "ABOUT",columnDefinition = "CLOB")
-    @Lob@Column(name = "ABOUT",columnDefinition = "text")
+   // @Column(name = "ABOUT",columnDefinition = "CLOB")
+    @Column(name = "ABOUT",columnDefinition = "text")
     private String about;
     @Column(name= "LAST_UPDATE_DATE",columnDefinition = "DATE")
     private Date LastUpdateDate;

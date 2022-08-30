@@ -10,7 +10,7 @@ public class Policy {
     //@Column(name = "DESCRIPTION",columnDefinition = "CLOB",nullable = false,unique = true)
     @Column(name = "DESCRIPTION",columnDefinition = "text",nullable = false)
     private String description;
-    @Column(name = "STATE",columnDefinition = "timestamptz",nullable = false)
+    @Column(name = "STATE",columnDefinition = "text",nullable = false)
     private String state;
     @Version
     private long recordControl;

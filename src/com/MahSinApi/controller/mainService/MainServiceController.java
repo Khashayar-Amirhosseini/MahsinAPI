@@ -52,13 +52,15 @@ public class MainServiceController {
         }
     }
     @RequestMapping(value = "/service/updateMainService.do",method =RequestMethod.POST)
-    public Object updatePolicy(@ModelAttribute MainService mainService,
+    public Object updateMainService(@ModelAttribute MainService mainService,
                                @RequestParam long userId,
                                @RequestParam final MultipartFile file){
         try {
             mainService.setDate(new Date(System.currentTimeMillis()))
                     .setRecordControl(mainServiceService.findOne(mainService.getId()).getRecordControl())
-                    .setUser(userService.findOne(userId));
+                    .setUser(userService.findOne(userId))
+                    .setDescription(mainService.getDescription())
+                    .setServices(mainServiceService.findOne(mainService.getId()).getServices());
             mainServiceService.update(mainService);
             if (file.isEmpty()){}
             else{

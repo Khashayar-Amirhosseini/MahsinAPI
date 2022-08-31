@@ -12,13 +12,13 @@
 </head>
 <body>
 <h1>save</h1>
-<form action="/action/admin/achievementSave.do">
+<form action="action/admin/achievementSave.do">
     <input type="text" name="description" placeholder="description">
     <input type="number" name="userId" placeholder="userId">
     <button type="submit">submit</button>
 </form>
 <h1>update</h1>
-<form action="/action/admin/achievementUpdate.do">
+<form action="action/admin/achievementUpdate.do">
     <input type="number" name="id" placeholder="id">
     <input type="text" name="description" placeholder="description">
     <input type="text" name="state" placeholder="state">
@@ -26,16 +26,16 @@
     <button type="submit">submit</button>
 </form>
 <h1>find one</h1>
-<form action="/action/guest/findOneAchievement.do">
+<form action="action/guest/findOneAchievement.do">
     <input type="number" name="id" placeholder="id">
     <button type="submit">submit</button>
 </form>
 <h1>find all</h1>
-<form action="/action/guest/findAllAchievement.do">
+<form action="action/guest/findAllAchievement.do">
     <button type="submit">submit</button>
 </form>
 <h1>delete one</h1>
-<form action="/action/admin/deleteAchievement.do">
+<form action="action/admin/deleteAchievement.do">
     <input type="number" name="achievementId" placeholder="achievementId">
     <button type="submit">submit</button>
 </form>

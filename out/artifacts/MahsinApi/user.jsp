@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>signup</h1>
-<form action="/action/userSignUp.do" method="post">
+<form action="action/userSignUp.do" method="post">
     <input type="email" name="userName" placeholder="userName">
     <input type="text" name="name" placeholder="name">
     <input type="text" name="family" placeholder="family">
@@ -24,7 +24,7 @@
 </form><br/>
 
 <h1>update</h1>
-<form action="/action/user/userEdit.do" method="post">
+<form action="action/user/userEdit.do" method="post">
     <input type="number" name="id" placeholder="id">
     <input type="text" name="userName" placeholder="userName">
     <input type="text" name="name" placeholder="name">
@@ -35,27 +35,27 @@
 </form><br/>
 
 <h1>changePassword</h1>
-<form action="/action/user/changePassword.do" method="post">
+<form action="action/user/changePassword.do" method="post">
     <input type="number" name="id" placeholder="id">
     <input type="password" name="oldPassword" placeholder="oldPassword">
     <input type="password" name="newPassword" placeholder="newPassword">
     <button type="submit">submit</button>
 </form><br/>
 <h1>forgotPassword</h1>
-<form action="/action/forgotPassword.do" method="post" >
+<form action="action/forgotPassword.do" method="post" >
     <input type="text" name="userName" placeholder="userName">
     <button type="submit">submit</button>
 </form><br/>
 
 <h1>retrievePassword</h1>
-<form action="/action/retrievePassword.do" method="post" >
+<form action="action/retrievePassword.do" method="post" >
     <input type="text" name="key" placeholder="key">
     <input type="text" name="pass" placeholder="pass">
     <button type="submit">submit</button>
 </form><br/>
 
 <h1>find All</h1>
-<form action="/action/management/userFindAll.do" >
+<form action="action/management/userFindAll.do" >
     <button type="submit">submit</button>
 </form><br/>
 

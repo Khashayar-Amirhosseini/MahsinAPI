@@ -51,12 +51,12 @@ public class EmailController {
             for (Role r:roleList){
                 if(r.getRoleName().equals("user")){
                   //  hasRole=true;
-                    return "redirect:http://localhost:3000";
+                    return "redirect:89.32.250.218:8080/Mahsin";
                 }
             }
             user.getRoles().add(role);
             userService.update(user);
-            return "redirect:/welcomePage.jsp";
+            return "redirect:welcomePage.jsp";
         }
         catch (Exception e){
             return e;

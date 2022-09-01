@@ -57,7 +57,7 @@ public class EmailController {
             }
             user.getRoles().add(role);
             userService.update(user);
-            return "redirect:http://89.32.250.218:8080/mahsinAPI/welcomePage.jsp";
+            return "redirect:http://89.32.250.218:8080/MahsinApi/welcomePage.jsp";
         }
         catch (Exception e){
             System.out.println(e);

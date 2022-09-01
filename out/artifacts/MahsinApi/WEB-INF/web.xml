@@ -34,7 +34,7 @@
     </servlet-mapping>
 
 
-   <!-- <filter>
+    <filter>
         <filter-name>EncodingFilter</filter-name>
         <filter-class>com.MahSinApi.controller.ForceEncoder</filter-class>
         <init-param>
@@ -122,7 +122,7 @@
         <filter-name>loginFilter</filter-name>
         <url-pattern>/action/role/*</url-pattern>
     </filter-mapping>
--->
+
 
 
 

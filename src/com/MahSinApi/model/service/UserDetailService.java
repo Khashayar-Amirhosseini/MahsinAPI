@@ -65,7 +65,7 @@ public class UserDetailService  {
                         claim("discount",roleCheck("discount",user.getRoles())).
                         setId(UUID.randomUUID().toString())
                         .setIssuedAt(Date.from(Instant.now()))
-                        .setExpiration(Date.from(Instant.now().plus(10l, ChronoUnit.MINUTES)))
+                        .setExpiration(Date.from(Instant.now().plus(60l, ChronoUnit.MINUTES)))
                         .signWith(hmacKey)
                         .compact();
                 return jwtToke;

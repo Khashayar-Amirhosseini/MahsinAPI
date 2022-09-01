@@ -34,6 +34,7 @@ public class EmailController {
 
     @RequestMapping("/userActivate.do")
     public Object userActivate(@RequestParam String token){
+
         String jwtToken=token;
         String secret = "asdfSFS34wfsdfsdfSDSD32dfsddDDerQSNCK34SOWEK5354fdgdf4";
         Key hmacKey = new SecretKeySpec(Base64.getDecoder().decode(secret),
@@ -46,20 +47,21 @@ public class EmailController {
             Role role=new Role().setRoleName("user");
             roleService.save(role);
             User user=userService.findOne( new Long(jwt.getBody().get("id").toString()));
-            //Boolean hasRole=false;
+            Boolean hasRole=false;
             List<Role> roleList=user.getRoles();
             for (Role r:roleList){
                 if(r.getRoleName().equals("user")){
-                  //  hasRole=true;
-                    return "redirect:89.32.250.218:8080/Mahsin";
+                   hasRole=true;
+                    return "redirect:http://89.32.250.218:8080/mahsin";
                 }
             }
             user.getRoles().add(role);
             userService.update(user);
-            return "redirect:welcomePage.jsp";
+            return "redirect:http://89.32.250.218:8080/mahsinAPI/welcomePage.jsp";
         }
         catch (Exception e){
-            return e;
+            System.out.println(e);
+            return "redirect:http://89.32.250.218:8080/mahsin";
         }
 
     }

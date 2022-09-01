@@ -30,6 +30,7 @@
   <a href="paragraph.jsp"><h1>Paragraph</h1></a>
   <a href="keyword.jsp"><h1>Keyword</h1></a>
   <a href="reference.jsp"><h1>References</h1></a>
+  <a href="welcomePage.jsp"><h1>welcomePage</h1></a>
 
   </body>
 

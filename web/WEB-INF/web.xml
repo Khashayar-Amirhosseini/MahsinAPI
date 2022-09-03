@@ -58,7 +58,7 @@
         <filter-name>CorsFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    <filter>
+    <!--<filter>
         <filter-name>loginFilter</filter-name>
         <filter-class>com.MahSinApi.controller.auth.LoginFilter</filter-class>
     </filter>
@@ -122,7 +122,7 @@
         <filter-name>loginFilter</filter-name>
         <url-pattern>/action/role/*</url-pattern>
     </filter-mapping>
-
+-->
 
 
 

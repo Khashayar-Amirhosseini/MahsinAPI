@@ -122,6 +122,10 @@
         <filter-name>loginFilter</filter-name>
         <url-pattern>/action/role/*</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/action/viewer/*</url-pattern>
+    </filter-mapping>
 
 
 

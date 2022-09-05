@@ -131,7 +131,7 @@ public class UserController {
             return e;
         }
     }
-    @RequestMapping("/management/findOneUser.do")
+    @RequestMapping("/viewer/findOneUser.do")
     public Object findOneUser(@RequestParam long userId){
         try {
             return userService.findOne(userId);

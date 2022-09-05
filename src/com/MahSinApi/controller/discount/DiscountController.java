@@ -83,7 +83,7 @@ public class DiscountController {
         }
     }
 
-    @RequestMapping("/user/findAllDiscount.do")
+    @RequestMapping("/viewer/findAllDiscount.do")
     public Object findAllDiscounts(@RequestParam long customerId){
         try {
             return discountService.findByUser(userService.findOne(customerId));
@@ -93,7 +93,7 @@ public class DiscountController {
             return e;
         }
     }
-    @RequestMapping("/discount/findDiscountByCode.do")@ResponseBody
+    @RequestMapping("/viewer/findDiscountByCode.do")@ResponseBody
     public Object findOneByCode(@RequestParam String code){
         try {
             return discountService.findOnebyCode(code);
@@ -119,7 +119,7 @@ public class DiscountController {
         }
     }
 
-    @RequestMapping("/discount/findAll.do")
+    @RequestMapping("/viewer/findAll.do")
     public Object findAll(){
         try {
             return discountService.findAll();

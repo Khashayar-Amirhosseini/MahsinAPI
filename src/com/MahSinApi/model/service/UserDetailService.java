@@ -63,6 +63,7 @@ public class UserDetailService  {
                         claim("management",roleCheck("management",user.getRoles())).
                         claim("role",roleCheck("role",user.getRoles())).
                         claim("discount",roleCheck("discount",user.getRoles())).
+                        claim("viewer",roleCheck("viewer",user.getRoles())).
                         setId(UUID.randomUUID().toString())
                         .setIssuedAt(Date.from(Instant.now()))
                         .setExpiration(Date.from(Instant.now().plus(60l, ChronoUnit.MINUTES)))

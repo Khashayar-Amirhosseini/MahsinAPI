@@ -40,7 +40,7 @@ public class RoleController {
         }
     }
 
-    @RequestMapping("/role/findOneRole.do")
+    @RequestMapping("/viewer/findOneRole.do")
     public Object findOneRole(@RequestParam long id){
         try {
             Role role=roleService.findOne(id);
@@ -53,7 +53,7 @@ public class RoleController {
             return e;
         }
     }
-    @RequestMapping("/role/findAllRoles.do")
+    @RequestMapping("/viewer/findAllRoles.do")
     public Object findAllRoles(){
         try {
             List<Role> roles=roleService.findAll();

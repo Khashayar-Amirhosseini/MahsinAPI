@@ -180,7 +180,7 @@ public class UserSignUp {
         }
     }
 
-    @RequestMapping(value = "/management/userFindAll.do")
+    @RequestMapping(value = "/viewer/userFindAll.do")
     public Object findAllUsers(){
 
         try {

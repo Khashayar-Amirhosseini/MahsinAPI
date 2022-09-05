@@ -83,7 +83,7 @@ public class DiscountController {
         }
     }
 
-    @RequestMapping("/viewer/findAllDiscount.do")
+    @RequestMapping("/user/findAllDiscount.do")
     public Object findAllDiscounts(@RequestParam long customerId){
         try {
             return discountService.findByUser(userService.findOne(customerId));

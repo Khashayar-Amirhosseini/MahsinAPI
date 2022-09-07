@@ -35,7 +35,7 @@ public class UserDetailService  {
         if(user!=null){
             UserPassword userPassword=passwordRepository.findPasswordByUser(user);
             if(passEncTech4.verifyUserPassword(password,userPassword.getPassword(),userPassword.getSecurityKey())){
-                String secret = "asdfSFS34wfsdfsdfSDSD32dfsddDDerQSNCK34SOWEK5354fdgdf4";
+                String secret = "";
                 Key hmacKey = new SecretKeySpec(Base64.getDecoder().decode(secret),
                         SignatureAlgorithm.HS256.getJcaName());
                 HashMap map=new HashMap();

@@ -207,6 +207,23 @@ public class UserSignUp {
             return e;
         }
     }
+    @RequestMapping(value = "/admin/changePassword.do",method = RequestMethod.POST)
+    public Object changePassword(@RequestParam long userId,
+                                 @RequestParam String newPassword){
+        PassEncTech4 passEncTech4=new PassEncTech4();
+        try {
+            User user=userService.findOne(userId);
+            UserPassword userPassword1=passwordService.findByUser(user);
+            String saltValue=  PassEncTech4.getSaltvalue(20);
+            userPassword1.setSecurityKey(saltValue).setPassword(passEncTech4.generateSecurePassword(newPassword,saltValue));
+            passwordService.update(userPassword1);
+            return user;
+        }
+        catch (Exception e){
+            return e;
+        }
+
+    }
 
 
 }

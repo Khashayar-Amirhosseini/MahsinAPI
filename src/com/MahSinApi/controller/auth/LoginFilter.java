@@ -38,8 +38,10 @@ public class LoginFilter implements Filter {
         File file=new File("C:\\key\\key.txt");
         BufferedReader bufferedReader=new BufferedReader(new FileReader(file));
         String secret=bufferedReader.readLine();
+        System.out.println(secret);
         Key hmacKey = new SecretKeySpec(Base64.getDecoder().decode(secret),
                 SignatureAlgorithm.HS256.getJcaName());
+        System.out.println(request.getRequestURI());
         try {
             Jws<Claims> jwt = Jwts.parserBuilder()
                     .setSigningKey(hmacKey)
@@ -50,6 +52,7 @@ public class LoginFilter implements Filter {
             System.out.println(requestAddress);
             System.out.println(jwt.getBody().toString());
             if (jwt.getBody().get(requestAddress).equals(true)) {
+                System.out.println("ok");
                 filterChain.doFilter(servletRequest, servletResponse);
             } else {
                 System.out.println(requestAddress);
@@ -60,6 +63,7 @@ public class LoginFilter implements Filter {
             }
         }
         catch (Exception e){
+            System.out.println(e.getMessage());
             response.sendError(700);
         }
         //String CurrentRole="";

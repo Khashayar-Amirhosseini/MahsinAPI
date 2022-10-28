@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.security.Key;
 import java.util.Base64;
 import java.util.HashMap;
@@ -30,7 +33,9 @@ public class UserLogin {
         try {
             String jwtToken=userDetailService.loadUserByUsername(userName.toLowerCase(),password);
             httpServletResponse.setHeader("Access-Control-Allow-Headers",jwtToken);
-            String secret = "asdfSFS34wfsdfsdfSDSD32dfsddDDerQSNCK34SOWEK5354fdgdf4";
+            File file=new File("C:\\key\\key.txt");
+            BufferedReader bufferedReader=new BufferedReader(new FileReader(file));
+            String secret=bufferedReader.readLine();
             Key hmacKey = new SecretKeySpec(Base64.getDecoder().decode(secret),
                     SignatureAlgorithm.HS256.getJcaName());
 
@@ -45,7 +50,8 @@ public class UserLogin {
             return map ;
         }
         catch (Exception e){
-            httpServletResponse.setHeader("Access-Control-Allow-Headers", ExceptionWrapper.getMessage(e));
+          httpServletResponse.setHeader("Access-Control-Allow-Headers", ExceptionWrapper.getMessage(e));
+
         }
         return null;
     }

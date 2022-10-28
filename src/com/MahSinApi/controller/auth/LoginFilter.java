@@ -12,6 +12,9 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.security.Key;
@@ -32,7 +35,9 @@ public class LoginFilter implements Filter {
         String jwtToken=request.getHeader("Access-Token");
         System.out.println(jwtToken);
         //String jwtToken=request.getParameter("accessToken");
-        String secret = "asdfSFS34wfsdfsdfSDSD32dfsddDDerQSNCK34SOWEK5354fdgdf4";
+        File file=new File("C:\\key\\key.txt");
+        BufferedReader bufferedReader=new BufferedReader(new FileReader(file));
+        String secret=bufferedReader.readLine();
         Key hmacKey = new SecretKeySpec(Base64.getDecoder().decode(secret),
                 SignatureAlgorithm.HS256.getJcaName());
         try {

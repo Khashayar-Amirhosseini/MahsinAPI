@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.crypto.spec.SecretKeySpec;
+import java.io.*;
 import java.security.Key;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -33,10 +34,12 @@ public class EmailController {
     private RoleService roleService;
 
     @RequestMapping("/userActivate.do")
-    public Object userActivate(@RequestParam String token){
+    public Object userActivate(@RequestParam String token) throws IOException {
 
         String jwtToken=token;
-        String secret = "asdfSFS34wfsdfsdfSDSD32dfsddDDerQSNCK34SOWEK5354fdgdf4";
+        File file=new File("C:\\key\\key.txt");
+        BufferedReader bufferedReader=new BufferedReader(new FileReader(file));
+        String secret=bufferedReader.readLine();
         Key hmacKey = new SecretKeySpec(Base64.getDecoder().decode(secret),
                 SignatureAlgorithm.HS256.getJcaName());
         try {

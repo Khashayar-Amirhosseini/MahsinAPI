@@ -18,6 +18,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.spec.SecretKeySpec;
+import java.io.*;
+import java.nio.file.Path;
 import java.security.Key;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -30,12 +32,16 @@ public class UserDetailService  {
     @Autowired
     PasswordRepository passwordRepository;
     PassEncTech4 passEncTech4=new PassEncTech4();
-    public String loadUserByUsername(String username,String password) throws UsernameNotFoundException, InvalidUserNameAndPasswordException {
+    public String loadUserByUsername(String username,String password) throws UsernameNotFoundException, InvalidUserNameAndPasswordException, IOException {
         User user=userRepository.findUserByUserName(username);
         if(user!=null){
             UserPassword userPassword=passwordRepository.findPasswordByUser(user);
             if(passEncTech4.verifyUserPassword(password,userPassword.getPassword(),userPassword.getSecurityKey())){
-                String secret = "";
+
+                File file=new File("C:\\key\\key.txt");
+                BufferedReader bufferedReader=new BufferedReader(new FileReader(file));
+                String secret=bufferedReader.readLine();
+
                 Key hmacKey = new SecretKeySpec(Base64.getDecoder().decode(secret),
                         SignatureAlgorithm.HS256.getJcaName());
                 HashMap map=new HashMap();

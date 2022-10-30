@@ -25,8 +25,8 @@ public class ParagraphPicController {
     private PostService postService;
     @Autowired
     private UserService userService;
-    private static String UPLOAD_DIRECTORY = ServerAddress.UPLOAD_DIRECTORY_FOR_PARAGRAPHS_PICTURE;
-    private static String IMAGE_DIRECTORY=ServerAddress.IMAGE_DIRECTORY_FOR_PARAGRAPHS_PICTURE;
+    private static String UPLOAD_DIRECTORY = ServerAddress.getInstance().UPLOAD_DIRECTORY_FOR_PARAGRAPHS_PICTURE;
+    private static String IMAGE_DIRECTORY=ServerAddress.getInstance().IMAGE_DIRECTORY_FOR_PARAGRAPHS_PICTURE;
     @RequestMapping(value = "/blogger/saveParaghraphPic.do",method = RequestMethod.POST)
     public Object saveParagraph(@ModelAttribute ParagraphPic paragraphPic,
                            @RequestParam long postId,

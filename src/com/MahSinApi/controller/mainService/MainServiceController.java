@@ -26,8 +26,8 @@ public class MainServiceController {
     private MainServiceService mainServiceService;
     @Autowired
     private UserService userService;
-    private static String UPLOAD_DIRECTORY = ServerAddress.UPLOAD_DIRECTORY;
-    private static String IMAGE_DIRECTORY=ServerAddress.IMAGE_DIRECTORY;
+    private static String UPLOAD_DIRECTORY = ServerAddress.getInstance().UPLOAD_DIRECTORY;
+    private static String IMAGE_DIRECTORY=ServerAddress.getInstance().IMAGE_DIRECTORY;
     @RequestMapping(value = "/service/saveMainService.do",method = RequestMethod.POST)
     public Object saveMainService(@ModelAttribute MainService mainService,
                                   @RequestParam long userId,

@@ -24,8 +24,8 @@ public class FacilityController {
     private FacilityService facilityService;
     @Autowired
     private UserService userService;
-    private static  String UPLOAD_DIRECTORY = ServerAddress.UPLOAD_DIRECTORY;
-    private static  String IMAGE_DIRECTORY=ServerAddress.IMAGE_DIRECTORY;
+    private static  String UPLOAD_DIRECTORY = ServerAddress.getInstance().UPLOAD_DIRECTORY;
+    private static  String IMAGE_DIRECTORY=ServerAddress.getInstance().IMAGE_DIRECTORY;
     @RequestMapping( value = "/facility/saveFacility.do",method = RequestMethod.POST)
     public Object saveFacility(@ModelAttribute Facility facility,
                                @RequestParam long userId,

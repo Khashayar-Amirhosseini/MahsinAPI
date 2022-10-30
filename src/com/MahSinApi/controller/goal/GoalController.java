@@ -19,8 +19,9 @@ public class GoalController {
     private GoalService goalService;
     @Autowired
     private UserService userService;
-    private static String UPLOAD_DIRECTORY = ServerAddress.UPLOAD_DIRECTORY;
-    private static String IMAGE_DIRECTORY=ServerAddress.IMAGE_DIRECTORY;
+    private static String UPLOAD_DIRECTORY = ServerAddress.getInstance().UPLOAD_DIRECTORY;
+    private static String IMAGE_DIRECTORY=ServerAddress.getInstance().IMAGE_DIRECTORY;
+
     @RequestMapping(value = "/goal/saveGoal.do",method = RequestMethod.POST)
     public Object saveGoal(@ModelAttribute Goal goal,
                            @RequestParam long userId,

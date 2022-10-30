@@ -23,8 +23,10 @@ public class DoctorController {
     @Autowired
     private LikeService likeService;
 
-    private static  String UPLOAD_DIRECTORY = ServerAddress.UPLOAD_DIRECTORY;
-    private static  String IMAGE_DIRECTORY=ServerAddress.IMAGE_DIRECTORY;
+    private static String UPLOAD_DIRECTORY = ServerAddress.getInstance().UPLOAD_DIRECTORY_FOR_POST;
+    //private static String UPLOAD_DIRECTORY = ServerAddress.UPLOAD_DIRECTORY_FOR_POST;
+    private static String IMAGE_DIRECTORY=ServerAddress.getInstance().IMAGE_DIRECTORY_FOR_POST;
+    //private static String IMAGE_DIRECTORY=ServerAddress.IMAGE_DIRECTORY_FOR_POST;
     @RequestMapping(value = "/doctor/saveDoctor.do",method=RequestMethod.POST)
     public Object saveDoctor(@ModelAttribute Doctor doctor,
                              @RequestParam long userId,

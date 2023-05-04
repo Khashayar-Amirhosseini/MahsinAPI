@@ -1,5 +1,6 @@
 package com.MahSinApi.controller.service;
 
+import com.MahSinApi.common.ServerAddress;
 import com.MahSinApi.model.entity.Doctor;
 import com.MahSinApi.model.entity.MainService;
 import com.MahSinApi.model.entity.Service;
@@ -7,13 +8,15 @@ import com.MahSinApi.model.service.MainServiceService;
 import com.MahSinApi.model.service.ServiceService;
 import com.MahSinApi.model.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -24,10 +27,13 @@ public class ServiceController {
     private MainServiceService mainServiceService;
     @Autowired
     private UserService userService;
-    @RequestMapping("/service/saveService.do")
+    private static String UPLOAD_DIRECTORY = ServerAddress.getInstance().UPLOAD_DIRECTORY;
+    private static String IMAGE_DIRECTORY=ServerAddress.getInstance().IMAGE_DIRECTORY;
+    @RequestMapping(value = "/service/saveService.do",method = RequestMethod.POST)
     public Object saveService(@ModelAttribute Service service,
                               @RequestParam long mainServiceId,
-                              @RequestParam long userId){
+                              @RequestParam long userId,
+                              @RequestParam final MultipartFile file){
         try {
 
             service.setDate(new Date(System.currentTimeMillis()))
@@ -38,6 +44,10 @@ public class ServiceController {
             mainService.getServices().add(service);
             serviceService.save(service);
             mainServiceService.update(mainService);
+            if (file.isEmpty()){}
+            else{
+                FileCopyUtils.copy(file.getBytes(), new File(UPLOAD_DIRECTORY+service.getId()+".png"));
+                System.out.println("service picture has been updated");}
             System.out.println("service has been saved");
             System.out.println(service.toString());
             return service;
@@ -47,14 +57,19 @@ public class ServiceController {
             return e;
         }
     }
-    @RequestMapping("/service/updateService.do")
+    @RequestMapping(value = "/service/updateService.do",method = RequestMethod.OPTIONS)
     public Object updateService(@ModelAttribute Service service,
-                               @RequestParam long userId){
+                               @RequestParam long userId,
+                                @RequestParam final MultipartFile file){
         try {
             service.setDate(new Date(System.currentTimeMillis()))
                     .setRecordControl(serviceService.findOne(service.getId()).getRecordControl())
                     .setUser(userService.findOne(userId));
             serviceService.update(service);
+            if (file.isEmpty()){}
+            else{
+                FileCopyUtils.copy(file.getBytes(), new File(UPLOAD_DIRECTORY+service.getId()+".png"));
+                System.out.println("service picture has been updated");}
             System.out.println("service has been updated");
             System.out.println(service.toString());
             return service;
@@ -68,9 +83,17 @@ public class ServiceController {
     public Object findOneService(@RequestParam long id){
         try {
             Service service=serviceService.findOne(id);
+            HashMap<String,Object> map=new HashMap<>();
+            map.put("id",service.getId());
+            map.put("title",service.getTitle());
+            map.put("description",service.getDescription());
+            map.put("date",service.getDate());
+            map.put("state",service.getState());
+            map.put("user",service.getUser());
+            map.put("image",getServicePicture(service.getId()));
             System.out.println("service has been fetched");
             System.out.println(service.toString());
-            return service;
+            return map;
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -81,8 +104,20 @@ public class ServiceController {
     public Object findAllServices(){
         try {
             List<Service> serviceList=serviceService.findAll();
+            List<Object> services=new ArrayList<>();
+            for(Service s:serviceList){
+                HashMap<String,Object> map=new HashMap<>();
+                map.put("id",s.getId());
+                map.put("title",s.getTitle());
+                map.put("description",s.getDescription());
+                map.put("date",s.getDate());
+                map.put("state",s.getState());
+                map.put("image",getServicePicture(s.getId()));
+                map.put("user",s.getUser());
+                services.add(map);
+            }
             System.out.println("All services have been fetched");
-            return serviceList;
+            return services;
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -94,6 +129,8 @@ public class ServiceController {
         try {
             Service service=serviceService.findOne(serviceId);
             serviceService.delete(service);
+            File file=new File(UPLOAD_DIRECTORY+serviceId+".png");
+            file.delete();
             System.out.println(service.toString());
             System.out.println("the mentioned service has been deleted");
             return findAllServices();
@@ -101,6 +138,17 @@ public class ServiceController {
         catch (Exception e){
             System.out.println(e.getMessage());
             return e;
+        }
+    }
+    @RequestMapping(value = "/guest/servicePicture.do")
+    public Object getServicePicture(@RequestParam long serviceId)
+            throws IOException {
+        File file = new File(UPLOAD_DIRECTORY+serviceId+".png");
+        if(file.exists()) {
+            return IMAGE_DIRECTORY+String.valueOf(serviceId)+".png";
+        }
+        else {
+            return null;
         }
     }
 

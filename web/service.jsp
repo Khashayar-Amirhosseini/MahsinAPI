@@ -17,6 +17,7 @@
     <input type="text" name="description" placeholder="description">
     <input type="number" name="mainServiceId" placeholder="mainServiceId">
     <input type="number" name="userId" placeholder="userId">
+    Select File: <input type="file" name="file"/>
     <button type="submit">submit</button>
 </form>
 <h1>update</h1>
